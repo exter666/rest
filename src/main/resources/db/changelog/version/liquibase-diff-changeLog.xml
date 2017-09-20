@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ex (generated)" id="1505078781267-1">
+        <createTable tableName="Accrued">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hoursSum" type="FLOAT8"/>
+            <column name="incomeNaturalSum" type="FLOAT8"/>
+            <column name="incomeSum" type="FLOAT8"/>
+            <column name="incomes" type="BYTEA"/>
+            <column name="incomesNatural" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-2">
+        <createTable tableName="Income">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="days" type="FLOAT8"/>
+            <column name="fullName" type="VARCHAR(255)"/>
+            <column name="hours" type="FLOAT8"/>
+            <column name="month" type="VARCHAR(255)"/>
+            <column name="percent" type="FLOAT8"/>
+            <column name="shortName" type="VARCHAR(255)"/>
+            <column name="sum" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-3">
+        <createTable tableName="PaymentList">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="currencyCode" type="VARCHAR(255)"/>
+            <column name="division" type="VARCHAR(255)"/>
+            <column name="firstName" type="VARCHAR(255)"/>
+            <column name="hash" type="VARCHAR(255)"/>
+            <column name="hireDate" type="BYTEA"/>
+            <column name="inn" type="VARCHAR(255)"/>
+            <column name="lastName" type="VARCHAR(255)"/>
+            <column name="midName" type="VARCHAR(255)"/>
+            <column name="monthYear" type="VARCHAR(255)"/>
+            <column name="ndfl" type="BYTEA"/>
+            <column name="normTime" type="FLOAT8"/>
+            <column name="org" type="VARCHAR(255)"/>
+            <column name="pf" type="BYTEA"/>
+            <column name="planTime" type="FLOAT8"/>
+            <column name="position" type="VARCHAR(255)"/>
+            <column name="salary" type="FLOAT8"/>
+            <column name="snils" type="VARCHAR(255)"/>
+            <column name="subdivision" type="VARCHAR(255)"/>
+            <column name="tableNumber" type="VARCHAR(255)"/>
+            <column name="type" type="INT"/>
+            <column name="workPeriods" type="BYTEA"/>
+            <column name="accrued_id" type="VARCHAR(255)"/>
+            <column name="withheld_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-4">
+        <createTable tableName="Withheld">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bankSum" type="FLOAT8"/>
+            <column name="cashboxSum" type="FLOAT8"/>
+            <column name="debtEmployee" type="FLOAT8"/>
+            <column name="deptCompany" type="FLOAT8"/>
+            <column name="taxSum" type="FLOAT8"/>
+            <column name="taxes" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-5">
+        <addPrimaryKey columnNames="id" constraintName="AccruedPK" tableName="Accrued"/>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-6">
+        <addPrimaryKey columnNames="id" constraintName="IncomePK" tableName="Income"/>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-7">
+        <addPrimaryKey columnNames="id" constraintName="PaymentListPK" tableName="PaymentList"/>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-8">
+        <addPrimaryKey columnNames="id" constraintName="WithheldPK" tableName="Withheld"/>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-9">
+        <addForeignKeyConstraint baseColumnNames="accrued_id" baseTableName="PaymentList" constraintName="FK_5x7rqgrocky9raclbj0gv5il6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="Accrued"/>
+    </changeSet>
+    <changeSet author="ex (generated)" id="1505078781267-10">
+        <addForeignKeyConstraint baseColumnNames="withheld_id" baseTableName="PaymentList" constraintName="FK_o2tbrskgth7sgj264181gjke4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="Withheld"/>
+    </changeSet>
+</databaseChangeLog>
